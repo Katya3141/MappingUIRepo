@@ -26,15 +26,19 @@ public class DoPath extends JPanel{
 	}
 
 	int[][] pictureToArray(){
-		Pixel[][] array = thePicture.getPixels2D();
-		int[][] intArray = new int[array.length][array[0].length];
+		Pixel[][] arrayPix = thePicture.getPixels2D();
+		int[][] intArray = new int[arrayPix.length][arrayPix[0].length];
 
-		for(Pixel[] pixArr : array){
-			for(Pixel pix : pixArr){
-				///
+		for(int pixArr = 0; pixArr < arrayPix.length; pixArr++){
+			for(int pix = 0; pix < arrayPix[0].length; pix++){
+
+				if(arrayPix[pixArr][pix].getRed() < 100)//TODO tune the greater than
+					intArray[pixArr][pix] = 1;//TODO does it default to 0????
 			}
 		}
-		return ;
+
+
+		return intArray;
 	}
 	
 	void drawPath() {
