@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,7 @@ public class InputSelect extends JPanel{
 	private MainClass mainClass;
 	JButton openButton;
 	JFileChooser chooser;
+	public File theImage;
 	
 	public InputSelect(MainClass myClass) {
 
@@ -34,7 +36,6 @@ public class InputSelect extends JPanel{
 
 		openButton = new JButton("From file...");
 		openButton.setBounds(mainClass.getWidth()/2-200, 200, 400, 50);
-
 		addListeners();
 		add(openButton);
 
@@ -43,9 +44,8 @@ public class InputSelect extends JPanel{
 		title.setText("How do you want to input your map?");
 		title.setFont(new Font("Dialog", Font.PLAIN, 30));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
-
-		addListeners();
 		add(title);
+		
 	}
 
 	private void addListeners() {
@@ -69,6 +69,8 @@ public class InputSelect extends JPanel{
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 			System.out.println("You chose to open this file: " +
 					chooser.getSelectedFile().getName());
+			theImage = chooser.getSelectedFile();
+			mainClass.showPanel("FileCheck");
 		}
 	}
 }
