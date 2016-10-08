@@ -20,6 +20,7 @@ public class DoPath extends JPanel{
 		thePicture.grayscale();
 
 		pixels = pictureToArray();
+		System.out.println(pixels);
 
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
