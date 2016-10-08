@@ -12,13 +12,14 @@ public class DoPath extends JPanel{
 
 	MainClass mainClass;
 	Picture thePicture;
+	int[][] pixels;
 
 	public DoPath(MainClass myClass){
 		mainClass = myClass;//TODO resizing window reset myFrame
 		thePicture = new Picture(mainClass.selectionMenu.theImage.getPath());
 		thePicture.grayscale();
 
-
+		pixels = pictureToArray();
 
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
@@ -34,6 +35,17 @@ public class DoPath extends JPanel{
 			}
 		}
 		return ;
+	}
+	
+	void drawPath() {
+		Pixel[][] array = thePicture.getPixels2D();
+		
+		for(int x = 0; x < array.length; x++) {
+			for(int y = 0; y < array[0].length; y++) {
+				if(pixels[x][y] == 2 || pixels[x][y] == 3 || pixels[x][y] == 4)
+					array[x][y].setRed(255);
+			}
+		}
 	}
 
 }
