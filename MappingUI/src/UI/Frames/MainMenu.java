@@ -7,27 +7,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import UI.Main.MainClass;
+
 public class MainMenu extends JPanel{
 
 	private static final long serialVersionUID = 6203946356665308224L;
-	
-	private JFrame myFrame;
-	
-	public MainMenu(JFrame frame) {
-		
-		myFrame = frame; //TODO resizing window reset myFrame
-		
+
+	private MainClass mainClass;
+
+	public MainMenu(MainClass myClass) {
+
+		mainClass = myClass;//TODO resizing window reset myFrame
+
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
-		
+
 		JButton inputNewButton = new JButton("Input New Map");
-		inputNewButton.setBounds(myFrame.getWidth()/2-200, 300, 400, 50);
+		inputNewButton.setBounds(mainClass.getWidth()/2-200, 300, 400, 50);
+
 		JButton viewPathButton = new JButton("View Path");
-		viewPathButton.setBounds(myFrame.getWidth()/2-200, 350, 400, 50);
-		
+		viewPathButton.setBounds(mainClass.getWidth()/2-200, 350, 400, 50);
 		JLabel title = new JLabel("Mapper");
 		title.setLocation(400, 50);
-		
+
 		add(inputNewButton);
 		add(viewPathButton);
 	}
