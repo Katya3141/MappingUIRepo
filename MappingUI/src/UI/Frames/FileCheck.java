@@ -40,7 +40,8 @@ public class FileCheck extends JPanel{
 		title.setFont(new Font("Dialog", Font.PLAIN, 30));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
 
-		ImageIcon image = new ImageIcon(mainClass.selectionMenu.theImage);
+		if(mainClass.selectionMenu.theImage.getPath()!=null)
+			ImageIcon image = new ImageIcon(mainClass.selectionMenu.theImage.getPath());
 		JLabel label = new JLabel("", image, JLabel.CENTER);
 		label.setBounds(30,30,40,40);
 		
