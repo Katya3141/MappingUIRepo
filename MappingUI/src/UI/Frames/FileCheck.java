@@ -46,16 +46,28 @@ public class FileCheck extends JPanel{
 
 	void addListeners(){
 
+		yesButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				toMainMenu();
+			}
+		});
+		
 		noButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				inputNewPressed();
+				toInputSelect();
 			}
 		});
 	}
 
-	void inputNewPressed(){
+	void toMainMenu() {
+		mainClass.showPanel("MainMenu");
+	}
+	
+	void toInputSelect() {
 		mainClass.showPanel("InputSelect");
 	}
 
