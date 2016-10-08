@@ -22,7 +22,7 @@ public class DoPath extends JPanel{
 	public DoPath(MainClass myClass){
 		mainClass = myClass;//TODO resizing window reset myFrame
 		try {
-			fw = new FileWriter("C:/Users/ian/git/Hack/MappingUIRepo/MappingUI/src/mapData.txt");
+			fw = new FileWriter("mapData.txt");
 			bw = new BufferedWriter(fw);
 			bw.write("TEST");
 		} catch (IOException e){e.printStackTrace();}
