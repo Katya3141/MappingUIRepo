@@ -2,6 +2,8 @@ package UI.Frames;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.Rectangle;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,9 +25,9 @@ public class InputSelect extends JPanel {
 		setBackground(Color.DARK_GRAY);
 
 		JLabel title = new JLabel();
-		title.setText("Select File");
+		title.setText("TEST");
 		title.setFont(new Font("Dialog", Font.PLAIN, 70));
-		title.setBounds(10, 50, 1000, 1000);
+		title.setBounds(new Rectangle(new Point(200, 50), title.getPreferredSize()));
 
 		add(title);
 	}

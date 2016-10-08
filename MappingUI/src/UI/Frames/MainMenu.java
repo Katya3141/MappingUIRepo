@@ -4,7 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.Point;
+import java.awt.Rectangle;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +19,7 @@ public class MainMenu extends JPanel{
 
 	private MainClass mainClass;
 	private JButton inputNewButton;
-	private JButton viewPathButton;
+	private JButton createPathButton;
 
 	public MainMenu(MainClass myClass) {
 
@@ -30,18 +31,17 @@ public class MainMenu extends JPanel{
 		inputNewButton = new JButton("Input New Map");
 		inputNewButton.setBounds(mainClass.getWidth()/2-200, 200, 400, 50);
 
-
-		viewPathButton = new JButton("View Path");
-		viewPathButton.setBounds(mainClass.getWidth()/2-200, 250, 400, 50);
-
+		createPathButton = new JButton("Create Path");
+		createPathButton.setBounds(mainClass.getWidth()/2-200, 250, 400, 50);
+		
 		JLabel title = new JLabel();
 		title.setText("Mapper");
 		title.setFont(new Font("Dialog", Font.PLAIN, 70));
-		title.setBounds(10, 50, 1000, 1000);
+		title.setBounds(new Rectangle(new Point(200, 50), title.getPreferredSize()));
 
 		addListeners();
 		add(inputNewButton);
-		add(viewPathButton);
+		add(createPathButton);
 		add(title);
 	}
 
@@ -52,14 +52,12 @@ public class MainMenu extends JPanel{
 			public void actionPerformed(ActionEvent e)
 			{
 				inputNewPressed();
-
 			}
 		});
 	}
 
 	void inputNewPressed(){
 		mainClass.replacePanel(mainClass.selectionMenu);
-
 	}
 
 }
