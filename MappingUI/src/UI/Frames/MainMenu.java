@@ -22,6 +22,7 @@ public class MainMenu extends JPanel{
 	private JButton inputNewButton;
 	private JButton createPathButton;
 
+	
 	public MainMenu(MainClass myClass) {
 
 		mainClass = myClass;//TODO resizing window reset myFrame
@@ -55,6 +56,18 @@ public class MainMenu extends JPanel{
 				inputNewPressed();
 			}
 		});
+		
+		createPathButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				createPathPressed();
+			}
+		});
+	}
+
+	protected void createPathPressed() {
+		mainClass.showPanel("DoPath");
 	}
 
 	void inputNewPressed(){
