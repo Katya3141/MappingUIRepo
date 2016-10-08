@@ -2,12 +2,16 @@ package UI.Frames;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,6 +27,7 @@ public class FileCheck extends JPanel{
 	private JButton yesButton;
 	private JButton noButton;
 	private ImageIcon image;
+	private JLabel label;
 
 	public FileCheck(MainClass myClass) {
 
@@ -49,9 +54,20 @@ public class FileCheck extends JPanel{
 	}
 	
 	public void displayImage(File path) {
-		System.out.println("Displaying image");
-		image = new ImageIcon(path.getPath());
-		JLabel label = new JLabel("", image, JLabel.CENTER);
+		BufferedImage image = null;
+		try {
+		    image = ImageIO.read(new File(path.getPath()));
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+		double scaleFactor = 250.0/(double)image.getHeight();
+		Image newImage = image.getScaledInstance((int) (image.getWidth()*scaleFactor), 250, Image.SCALE_SMOOTH);
+		
+		ImageIcon icon = new ImageIcon(newImage);
+		label = new JLabel("", icon, JLabel.CENTER);
+		
+		label.setBounds(mainClass.getWidth()/2-(int)(image.getWidth()*scaleFactor)/2,100,(int) (image.getWidth()*scaleFactor),250);
 		add(label);
 	}
 
@@ -79,6 +95,7 @@ public class FileCheck extends JPanel{
 	}
 	
 	void toInputSelect() {
+		remove(label);
 		mainClass.showPanel("InputSelect");
 	}
 
