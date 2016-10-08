@@ -1,6 +1,9 @@
 package UI.Frames;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
@@ -13,24 +16,38 @@ public class DoPath extends JPanel{
 	MainClass mainClass;
 	Picture thePicture;
 	int[][] pixels;
+	FileWriter fw;
+	BufferedWriter bw;
 
 	public DoPath(MainClass myClass){
 		mainClass = myClass;//TODO resizing window reset myFrame
+		try {
+			fw = new FileWriter("C:/Users/ian/git/Hack/MappingUIRepo/MappingUI/src/mapData.txt");
+			bw = new BufferedWriter(fw);
+			bw.write("TEST");
+		} catch (IOException e){e.printStackTrace();}
 		
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 	}
 
 	public void setupPicture(){
-		System.out.println(mainClass.selectionMenu.theImage.getPath());
 		thePicture = new Picture(mainClass.selectionMenu.theImage.getPath());
 		thePicture.grayscale();
-
 		pixels = pictureToArray();
-		System.out.println(pixels);
+
+		try{
+			for(int[] iArr : pixels){
+				for(int i : iArr){
+					bw.write(String.valueOf(i));
+				}
+				//bw.write("\n");
+			}
+			bw.close();//TODO find better place to close bw
+			fw.close();
+		}catch (IOException e){e.printStackTrace();}
 	}
-	
-	
+
 	int[][] pictureToArray(){
 		Pixel[][] arrayPix = thePicture.getPixels2D();
 		int[][] intArray = new int[arrayPix.length][arrayPix[0].length];
