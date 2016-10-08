@@ -6,9 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import UI.Main.MainClass;
 
@@ -17,9 +21,9 @@ public class InputSelect extends JPanel{
 	private static final long serialVersionUID = 6203946356665308224L;
 
 	private MainClass mainClass;
-	private JButton fileBrowseButton;
-	private JButton cameraButton;
-
+	JButton openButton;
+	JFileChooser chooser;
+	
 	public InputSelect(MainClass myClass) {
 
 		mainClass = myClass;//TODO resizing window reset myFrame
@@ -27,36 +31,45 @@ public class InputSelect extends JPanel{
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 
-		fileBrowseButton = new JButton("From file...");
-		fileBrowseButton.setBounds(mainClass.getWidth()/2-200, 200, 400, 50);
 
-		cameraButton = new JButton("Camera...");
-		cameraButton.setBounds(mainClass.getWidth()/2-200, 250, 400, 50);
-		
+		openButton = new JButton("From file...");
+		openButton.setBounds(mainClass.getWidth()/2-200, 200, 400, 50);
+
+		addListeners();
+		add(openButton);
+
+
 		JLabel title = new JLabel();
 		title.setText("How do you want to input your map?");
 		title.setFont(new Font("Dialog", Font.PLAIN, 30));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
 
 		addListeners();
-		add(fileBrowseButton);
-		add(cameraButton);
 		add(title);
 	}
 
-	void addListeners(){
-
-		fileBrowseButton.addActionListener(new ActionListener()
+	private void addListeners() {
+		openButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				inputNewPressed();
+				openButtonPressed();
 			}
+
 		});
+
 	}
 
-	void inputNewPressed(){
-		//mainClass.showPanel("");
+	private void openButtonPressed() {
+		chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				"JPG & GIF Images", "jpg", "gif");
+		chooser.setFileFilter(filter);
+		int returnVal = chooser.showOpenDialog(this);
+		if(returnVal == JFileChooser.APPROVE_OPTION) {
+			System.out.println("You chose to open this file: " +
+					chooser.getSelectedFile().getName());
+		}
 	}
-
 }
+
