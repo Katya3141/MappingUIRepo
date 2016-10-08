@@ -1,6 +1,7 @@
 package UI.Frames;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ public class MainMenu extends JPanel{
 	private static final long serialVersionUID = 6203946356665308224L;
 
 	private MainClass mainClass;
+	private JButton inputNewButton;
+	private JButton viewPathButton;
 
 	public MainMenu(MainClass myClass) {
 
@@ -22,15 +25,19 @@ public class MainMenu extends JPanel{
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 
-		JButton inputNewButton = new JButton("Input New Map");
-		inputNewButton.setBounds(mainClass.getWidth()/2-200, 300, 400, 50);
+		inputNewButton = new JButton("Input New Map");
+		inputNewButton.setBounds(mainClass.getWidth()/2-200, 200, 400, 50);
 
-		JButton viewPathButton = new JButton("View Path");
-		viewPathButton.setBounds(mainClass.getWidth()/2-200, 350, 400, 50);
-		JLabel title = new JLabel("Mapper");
-		title.setLocation(400, 50);
+		viewPathButton = new JButton("View Path");
+		viewPathButton.setBounds(mainClass.getWidth()/2-200, 250, 400, 50);
+		
+		JLabel title = new JLabel();
+		title.setText("Mapper");
+		title.setFont(new Font("Dialog", Font.PLAIN, 70));
+		title.setBounds(10, 50, 1000, 1000);
 
 		add(inputNewButton);
 		add(viewPathButton);
+		add(title);
 	}
 }
