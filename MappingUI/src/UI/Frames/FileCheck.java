@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Point;
 import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,10 +40,15 @@ public class FileCheck extends JPanel{
 		title.setFont(new Font("Dialog", Font.PLAIN, 30));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
 
+		ImageIcon image = new ImageIcon(mainClass.selectionMenu.theImage);
+		JLabel label = new JLabel("", image, JLabel.CENTER);
+		label.setBounds(30,30,40,40);
+		
 		addListeners();
 		add(yesButton);
 		add(noButton);
 		add(title);
+		add(label);
 	}
 
 	void addListeners(){
