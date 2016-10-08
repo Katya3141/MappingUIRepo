@@ -43,8 +43,7 @@ public class DoPath extends JPanel{
 				}
 				//bw.write("\n");
 			}
-			bw.close();//TODO find better place to close bw
-			fw.close();
+		
 		}catch (IOException e){e.printStackTrace();}
 	}
 
