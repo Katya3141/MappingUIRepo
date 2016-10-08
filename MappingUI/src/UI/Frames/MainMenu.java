@@ -68,6 +68,7 @@ public class MainMenu extends JPanel{
 
 	protected void createPathPressed() {
 		mainClass.showPanel("DoPath");
+		mainClass.doPath.setupPicture();
 	}
 
 	void inputNewPressed(){

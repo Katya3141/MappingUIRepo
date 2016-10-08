@@ -16,16 +16,21 @@ public class DoPath extends JPanel{
 
 	public DoPath(MainClass myClass){
 		mainClass = myClass;//TODO resizing window reset myFrame
+		
+		setLayout(null);
+		setBackground(Color.DARK_GRAY);
+	}
+
+	public void setupPicture(){
+		System.out.println(mainClass.selectionMenu.theImage.getPath());
 		thePicture = new Picture(mainClass.selectionMenu.theImage.getPath());
 		thePicture.grayscale();
 
 		pixels = pictureToArray();
 		System.out.println(pixels);
-
-		setLayout(null);
-		setBackground(Color.DARK_GRAY);
 	}
-
+	
+	
 	int[][] pictureToArray(){
 		Pixel[][] arrayPix = thePicture.getPixels2D();
 		int[][] intArray = new int[arrayPix.length][arrayPix[0].length];
@@ -41,10 +46,10 @@ public class DoPath extends JPanel{
 
 		return intArray;
 	}
-	
+
 	void drawPath() {
 		Pixel[][] array = thePicture.getPixels2D();
-		
+
 		for(int x = 0; x < array.length; x++) {
 			for(int y = 0; y < array[0].length; y++) {
 				if(pixels[x][y] == 2 || pixels[x][y] == 3 || pixels[x][y] == 4)
