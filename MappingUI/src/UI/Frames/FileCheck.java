@@ -56,7 +56,7 @@ public class FileCheck extends JPanel{
 	}
 
 	void inputNewPressed(){
-		mainClass.replacePanel(mainClass.selectionMenu);
+		mainClass.showPanel("InputSelect");
 	}
 
 }

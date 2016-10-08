@@ -1,5 +1,7 @@
 package UI.Main;
 
+import java.awt.CardLayout;
+
 import javax.swing.*;//for JFrame etc.
 
 import UI.Frames.FileCheck;
@@ -13,19 +15,28 @@ public class MainClass extends JFrame{
 	public MainMenu menu;
 	public InputSelect selectionMenu;
 	public FileCheck fileCheck;
+	CardLayout myCardLayout;
+	JPanel panels;
 	
 	//start of everything
 	MainClass(){
 		setupFrame();
-		
+
 	}
 	
 	void setupFrame(){
 		setSize(600,400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		myCardLayout = new CardLayout();
+		panels = new JPanel();
+		panels.setLayout(myCardLayout);
+		
 		initPanels();//setup panel objects
-		add(fileCheck);
+		myCardLayout.show(panels, "MainMenu");
+		
+		add(panels);
+
 		setVisible(true);
 	}
 	
@@ -33,11 +44,16 @@ public class MainClass extends JFrame{
 		menu = new MainMenu(this);
 		selectionMenu = new InputSelect(this);
 		fileCheck = new FileCheck(this);
+		
+		panels.add(menu, "MainMenu");
+		panels.add(selectionMenu, "InputSelect");
+		panels.add(fileCheck, "FileCheck");
 	}
 	
-	public void replacePanel(JPanel panel){
-		removeAll();
-		add(panel);
+	public void showPanel(String panel){
+		myCardLayout.show(panels, panel);
+		repaint();
+		revalidate();
 	}
 	
 	
