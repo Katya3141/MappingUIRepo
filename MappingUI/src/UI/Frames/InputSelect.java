@@ -71,6 +71,7 @@ public class InputSelect extends JPanel{
 					chooser.getSelectedFile().getName());
 			theImage = chooser.getSelectedFile();
 			mainClass.showPanel("FileCheck");
+			mainClass.fileCheck.displayImage(theImage);
 		}
 	}
 }

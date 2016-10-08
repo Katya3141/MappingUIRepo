@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -21,6 +22,7 @@ public class FileCheck extends JPanel{
 	private MainClass mainClass;
 	private JButton yesButton;
 	private JButton noButton;
+	private ImageIcon image;
 
 	public FileCheck(MainClass myClass) {
 
@@ -39,16 +41,17 @@ public class FileCheck extends JPanel{
 		title.setText("Is this your file?");
 		title.setFont(new Font("Dialog", Font.PLAIN, 30));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
-
-		if(mainClass.selectionMenu.theImage.getPath()!=null)
-			ImageIcon image = new ImageIcon(mainClass.selectionMenu.theImage.getPath());
-		JLabel label = new JLabel("", image, JLabel.CENTER);
-		label.setBounds(30,30,40,40);
 		
 		addListeners();
 		add(yesButton);
 		add(noButton);
 		add(title);
+	}
+	
+	public void displayImage(File path) {
+		System.out.println("Displaying image");
+		image = new ImageIcon(path.getPath());
+		JLabel label = new JLabel("", image, JLabel.CENTER);
 		add(label);
 	}
 
