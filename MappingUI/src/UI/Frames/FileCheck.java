@@ -46,7 +46,8 @@ public class FileCheck extends JPanel{
 		title.setText("Is this your file?");
 		title.setFont(new Font("Dialog", Font.PLAIN, 30));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
-		
+		title.setForeground(Color.LIGHT_GRAY);
+
 		addListeners();
 		add(yesButton);
 		add(noButton);
@@ -92,6 +93,8 @@ public class FileCheck extends JPanel{
 
 	void yesButtonPressed() {
 		mainClass.showPanel("MainMenu");
+		mainClass.menu.createPathButton.setEnabled(true); 
+
 	}
 	
 	void toInputSelect() {

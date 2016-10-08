@@ -20,11 +20,11 @@ public class MainMenu extends JPanel{
 
 	private MainClass mainClass;
 	private JButton inputNewButton;
-	private JButton createPathButton;
+	JButton createPathButton;
+	boolean gotPicture;
 
-	
 	public MainMenu(MainClass myClass) {
-
+		gotPicture = false;
 		mainClass = myClass;//TODO resizing window reset myFrame
 
 		setLayout(null);
@@ -34,12 +34,15 @@ public class MainMenu extends JPanel{
 		inputNewButton.setBounds(mainClass.getWidth()/2-200, 200, 400, 50);
 
 		createPathButton = new JButton("Create Path");
-		createPathButton.setBounds(mainClass.getWidth()/2-200, 250, 400, 50);
+		createPathButton.setBounds(mainClass.getWidth()/2-200, 260, 400, 50);
+		createPathButton.setEnabled(false); 
 
+		
 		JLabel title = new JLabel();
 		title.setText("Mapper");
 		title.setFont(new Font("Dialog", Font.PLAIN, 70));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
+		title.setForeground(Color.LIGHT_GRAY);
 
 		addListeners();
 		add(inputNewButton);
@@ -56,7 +59,7 @@ public class MainMenu extends JPanel{
 				inputNewPressed();
 			}
 		});
-		
+
 		createPathButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -67,8 +70,10 @@ public class MainMenu extends JPanel{
 	}
 
 	protected void createPathPressed() {
-		mainClass.showPanel("DoPath");
-		mainClass.doPath.setupPicture();
+		if(gotPicture)	{
+			mainClass.showPanel("DoPath");
+			mainClass.doPath.setupPicture();
+		} 
 	}
 
 	void inputNewPressed(){

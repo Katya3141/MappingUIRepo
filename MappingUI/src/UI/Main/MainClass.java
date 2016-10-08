@@ -16,7 +16,7 @@ public class MainClass extends JFrame{
 	public DoPath doPath;
 	CardLayout myCardLayout;
 	JPanel panels;
-	
+
 	//start of everything
 	MainClass(){
 		setupFrame();
