@@ -1,5 +1,7 @@
 package UI.Main;
 
+import java.awt.CardLayout;
+
 import javax.swing.*;//for JFrame etc.
 
 import UI.Frames.InputSelect;
@@ -11,30 +13,43 @@ public class MainClass extends JFrame{
 
 	public MainMenu menu;
 	public InputSelect selectionMenu;
+	CardLayout myCardLayout;
+	JPanel panels;
 	
 	//start of everything
 	MainClass(){
 		setupFrame();
-		
+
 	}
 	
 	void setupFrame(){
 		setSize(600,400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		myCardLayout = new CardLayout();
+		panels = new JPanel();
+		panels.setLayout(myCardLayout);
+		
 		initPanels();//setup panel objects
-		add(menu);
+	
+		myCardLayout.show(panels, "MainMenu");
+		
+		add(panels);
 		setVisible(true);
 	}
 	
 	void initPanels(){
 		menu = new MainMenu(this);
 		selectionMenu = new InputSelect();
+		
+		panels.add(menu, "MainMenu");
+		panels.add(selectionMenu, "InputSelect");
 	}
 	
-	public void replacePanel(JPanel panel){
-		removeAll();
-		add(panel);
+	public void showPanel(String panel){
+		myCardLayout.show(panels, panel);
+		repaint();
+		revalidate();
 	}
 	
 	

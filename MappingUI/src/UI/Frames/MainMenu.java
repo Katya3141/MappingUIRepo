@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.Point;
 import java.awt.Rectangle;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,7 +34,7 @@ public class MainMenu extends JPanel{
 
 		createPathButton = new JButton("Create Path");
 		createPathButton.setBounds(mainClass.getWidth()/2-200, 250, 400, 50);
-		
+
 		JLabel title = new JLabel();
 		title.setText("Mapper");
 		title.setFont(new Font("Dialog", Font.PLAIN, 70));
@@ -57,7 +58,7 @@ public class MainMenu extends JPanel{
 	}
 
 	void inputNewPressed(){
-		mainClass.replacePanel(mainClass.selectionMenu);
+		mainClass.showPanel("InputSelect");
 	}
 
 }
