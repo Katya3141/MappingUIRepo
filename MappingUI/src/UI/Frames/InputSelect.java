@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,7 @@ public class InputSelect extends JPanel{
 	private MainClass mainClass;
 	JButton openButton;
 	JFileChooser chooser;
+	File theImage;
 	
 	public InputSelect(MainClass myClass) {
 
@@ -69,6 +71,8 @@ public class InputSelect extends JPanel{
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 			System.out.println("You chose to open this file: " +
 					chooser.getSelectedFile().getName());
+			theImage = chooser.getSelectedFile();
+			
 		}
 	}
 }
