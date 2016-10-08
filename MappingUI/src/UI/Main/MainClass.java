@@ -4,9 +4,7 @@ import java.awt.CardLayout;
 
 import javax.swing.*;//for JFrame etc.
 
-import UI.Frames.FileCheck;
-import UI.Frames.InputSelect;
-import UI.Frames.MainMenu;
+import UI.Frames.*;
 
 public class MainClass extends JFrame{
 
@@ -15,6 +13,7 @@ public class MainClass extends JFrame{
 	public MainMenu menu;
 	public InputSelect selectionMenu;
 	public FileCheck fileCheck;
+	public DoPath doPath;
 	CardLayout myCardLayout;
 	JPanel panels;
 	
@@ -44,7 +43,9 @@ public class MainClass extends JFrame{
 		menu = new MainMenu(this);
 		selectionMenu = new InputSelect(this);
 		fileCheck = new FileCheck(this);
-		
+		doPath = new DoPath(this);
+
+		panels.add(menu, "DoPath");
 		panels.add(menu, "MainMenu");
 		panels.add(selectionMenu, "InputSelect");
 		panels.add(fileCheck, "FileCheck");

@@ -24,7 +24,7 @@ public class InputSelect extends JPanel{
 	private MainClass mainClass;
 	JButton openButton;
 	JFileChooser chooser;
-	public File theImage;
+	public File theImage;//TODO make this store in the main class
 	
 	public InputSelect(MainClass myClass) {
 

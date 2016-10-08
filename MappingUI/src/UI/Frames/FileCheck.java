@@ -58,7 +58,7 @@ public class FileCheck extends JPanel{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				toMainMenu();
+				yesButtonPressed();
 			}
 		});
 		
@@ -71,7 +71,7 @@ public class FileCheck extends JPanel{
 		});
 	}
 
-	void toMainMenu() {
+	void yesButtonPressed() {
 		mainClass.showPanel("MainMenu");
 	}
 	
