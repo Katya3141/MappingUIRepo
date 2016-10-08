@@ -12,41 +12,41 @@ import javax.swing.JPanel;
 
 import UI.Main.MainClass;
 
-public class MainMenu extends JPanel{
+public class FileCheck extends JPanel{
 
 	private static final long serialVersionUID = 6203946356665308224L;
 
 	private MainClass mainClass;
-	private JButton inputNewButton;
-	private JButton createPathButton;
+	private JButton yesButton;
+	private JButton noButton;
 
-	public MainMenu(MainClass myClass) {
+	public FileCheck(MainClass myClass) {
 
 		mainClass = myClass;//TODO resizing window reset myFrame
 
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 
-		inputNewButton = new JButton("Input New Map");
-		inputNewButton.setBounds(mainClass.getWidth()/2-200, 200, 400, 50);
+		yesButton = new JButton("Yes");
+		yesButton.setBounds(mainClass.getWidth()-100, mainClass.getHeight()-70, 100, 50);
 
-		createPathButton = new JButton("Create Path");
-		createPathButton.setBounds(mainClass.getWidth()/2-200, 250, 400, 50);
+		noButton = new JButton("No");
+		noButton.setBounds(0, mainClass.getHeight()-70, 100, 50);
 		
 		JLabel title = new JLabel();
-		title.setText("Mapper");
-		title.setFont(new Font("Dialog", Font.PLAIN, 70));
+		title.setText("Is this your file?");
+		title.setFont(new Font("Dialog", Font.PLAIN, 30));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
 
 		addListeners();
-		add(inputNewButton);
-		add(createPathButton);
+		add(yesButton);
+		add(noButton);
 		add(title);
 	}
 
 	void addListeners(){
 
-		inputNewButton.addActionListener(new ActionListener()
+		noButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
