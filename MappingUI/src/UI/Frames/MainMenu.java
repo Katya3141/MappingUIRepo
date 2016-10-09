@@ -25,20 +25,23 @@ public class MainMenu extends JPanel{
 
 	public MainMenu(MainClass myClass) {
 		gotPicture = false;
-		mainClass = myClass;//TODO resizing window reset myFrame
+		mainClass = myClass;
 
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 
-		inputNewButton = new JButton("Input New Map");
+		//inputNewButton = new JButton("Upload Image");//TODO
+		inputNewButton = new JButton("Upload Map");
 		inputNewButton.setBounds(mainClass.getWidth()/2-200, 200, 400, 50);
 
+		//createPathButton = new JButton("Create B&W Image");//TODO
 		createPathButton = new JButton("Create Path");
 		createPathButton.setBounds(mainClass.getWidth()/2-200, 260, 400, 50);
 		createPathButton.setEnabled(false); 
 
-		
+
 		JLabel title = new JLabel();
+		//title.setText("B&W Generator");//TODO
 		title.setText("Mapper");
 		title.setFont(new Font("Dialog", Font.PLAIN, 70));
 		title.setBounds(new Rectangle(new Point(mainClass.getWidth()/2-title.getPreferredSize().width/2, 50), title.getPreferredSize()));
@@ -70,12 +73,19 @@ public class MainMenu extends JPanel{
 	}
 
 	protected void createPathPressed() {
-		if(gotPicture)	{
+		
 			mainClass.showPanel("DoPath");
 			mainClass.doPath.setupPicture();
-		} 
+		
 	}
 
+//	protected void createPathPressed() {
+//		if(gotPicture)	{
+//			mainClass.showPanel("MakePicture");
+//			mainClass.makePicture.setupPicture();
+//		} 
+//	}
+	 
 	void inputNewPressed(){
 		mainClass.showPanel("InputSelect");
 	}

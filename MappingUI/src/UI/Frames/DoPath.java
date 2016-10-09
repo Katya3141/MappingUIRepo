@@ -1,9 +1,12 @@
 package UI.Frames;
 
 import java.awt.Color;
+import java.awt.PrintJob;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.swing.JPanel;
 
@@ -13,20 +16,17 @@ import UI.Util.Pixel;
 
 public class DoPath extends JPanel{
 
+	private static final long serialVersionUID = 8656702149493630668L;
+
 	MainClass mainClass;
 	Picture thePicture;
 	int[][] pixels;
-	FileWriter fw;
-	BufferedWriter bw;
+	PrintWriter writer;
 
 	public DoPath(MainClass myClass){
 		mainClass = myClass;//TODO resizing window reset myFrame
-		try {
-			fw = new FileWriter("mapData.txt");
-			bw = new BufferedWriter(fw);
-			bw.write("TEST");
-		} catch (IOException e){e.printStackTrace();}
-		
+
+
 		setLayout(null);
 		setBackground(Color.DARK_GRAY);
 	}
@@ -37,14 +37,16 @@ public class DoPath extends JPanel{
 		pixels = pictureToArray();
 
 		try{
+			writer = new PrintWriter(new File("mapData.txt"));
 			for(int[] iArr : pixels){
 				for(int i : iArr){
-					bw.write(String.valueOf(i));
+					writer.print(i);
 				}
-				//bw.write("\n");
+				writer.println();
 			}
-		
+			writer.close();
 		}catch (IOException e){e.printStackTrace();}
+
 	}
 
 	int[][] pictureToArray(){

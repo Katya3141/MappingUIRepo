@@ -14,6 +14,7 @@ public class MainClass extends JFrame{
 	public InputSelect selectionMenu;
 	public FileCheck fileCheck;
 	public DoPath doPath;
+	public MakePicture makePicture;
 	CardLayout myCardLayout;
 	JPanel panels;
 
@@ -35,7 +36,6 @@ public class MainClass extends JFrame{
 		myCardLayout.show(panels, "MainMenu");
 		
 		add(panels);
-
 		setVisible(true);
 	}
 	
@@ -44,8 +44,10 @@ public class MainClass extends JFrame{
 		selectionMenu = new InputSelect(this);
 		fileCheck = new FileCheck(this);
 		doPath = new DoPath(this);
-
-		panels.add(menu, "DoPath");
+		makePicture = new MakePicture(this);
+		
+		panels.add(makePicture, "MakePicture");
+		//panels.add(doPath, "DoPath");
 		panels.add(menu, "MainMenu");
 		panels.add(selectionMenu, "InputSelect");
 		panels.add(fileCheck, "FileCheck");
